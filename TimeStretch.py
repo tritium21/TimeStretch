@@ -1,3 +1,4 @@
+import datetime
 from os import path
 import re
 import sys
@@ -37,6 +38,7 @@ class GUI:
         self.output_var = tkinter.StringVar()
         self.stretch_var = tkinter.DoubleVar()
         self.stretch_label_var = tkinter.StringVar()
+        self.finish_var = tkinter.StringVar()
         self.input_var.trace_add('write', self._trace_input)
         self.stretch_var.trace_add("write", self._trace_stretch)
         self.input_var.set(_format_time(self.total_seconds))
@@ -45,9 +47,9 @@ class GUI:
     def init_ui(self):
         self.root.columnconfigure(0, weight=1)
         self.root.resizable(0, 0)
-        self.root.attributes("-toolwindow", 1)
         self.root.title("Time Stretch Calculator")
-        self.root.minsize(width=200, height=0)
+        self.set_icon()
+        self.root.minsize(width=300, height=0)
         self.mainframe = ttk.Frame(self.root)
         self.mainframe.grid(column=0, row=0, sticky="NEWS")
         self.mainframe.columnconfigure(0, weight=1)
@@ -65,6 +67,19 @@ class GUI:
         self.output = ttk.Label(self.mainframe, textvariable=self.output_var)
         self.output.grid(column=0, row=2, sticky="EW", columnspan=2)
 
+        self.finish = ttk.Label(self.mainframe, textvariable=self.finish_var)
+        self.finish.grid(column=0, row=3, sticky="EW", columnspan=2)
+
+    def set_icon(self):
+        if getattr(sys, 'frozen', False):
+            icon = path.join(sys._MEIPASS, 'clock.ico')
+        else:
+            icon = path.join(
+                path.dirname(path.abspath(__file__)),
+                'clock.ico',
+            )
+        self.root.iconbitmap(icon)
+
     def _trace_stretch(self, *args):
         val = self.stretch_var.get()
         self.stretch_factor = round(val, 1)
@@ -78,7 +93,10 @@ class GUI:
 
     def update(self):
         out = int(self.total_seconds / self.stretch_factor)
-        self.output_var.set(_format_time(out))
+        self.output_var.set('Remaining:\t' +_format_time(out))
+        td = datetime.timedelta(seconds=out)
+        finish = datetime.datetime.now() + td
+        self.finish_var.set('Finished at:\t' + finish.strftime('%x %X'))
 
 
 root = tkinter.Tk()
