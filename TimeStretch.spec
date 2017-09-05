@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['TimeStretch.py'],
+a = Analysis(['TimeStretch.pyw'],
              pathex=['C:\\devel\\TimeStretch'],
              binaries=[],
              datas=[('clock.ico', '.')],
