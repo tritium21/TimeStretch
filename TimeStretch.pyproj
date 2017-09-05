@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>cf22854c-08bf-4d02-acaa-9405186547ec</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>TimeStretch.py</StartupFile>
+    <StartupFile>TimeStretch.pyw</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,7 +23,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="TimeStretch.py" />
+    <Compile Include="TimeStretch.pyw" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

@@ -86,7 +86,7 @@ class App:
 
     def update(self):
         out = int(self.total_seconds / self.stretch_factor)
-        self.output_var.set('Remaining:\t' +_format_time(out))
+        self.output_var.set('Remaining:\t' + _format_time(out))
         td = datetime.timedelta(seconds=out)
         finish = datetime.datetime.now() + td
         self.finish_var.set('Finished at:\t' + finish.strftime('%x %X'))
