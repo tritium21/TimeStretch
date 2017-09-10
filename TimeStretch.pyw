@@ -61,7 +61,7 @@ class App:
         self.stretch_var.set(self.stretch_factor)
 
     def init_ui(self):
-        self.mainframe = ttk.Frame(self.root)
+        self.mainframe = ttk.Frame(self.root,  borderwidth=3, relief='groove')
         self.mainframe.grid(column=0, row=0, sticky="NEWS")
         self.mainframe.columnconfigure(0, weight=1)
         self.mainframe.columnconfigure(1, weight=0)
