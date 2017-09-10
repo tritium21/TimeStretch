@@ -5,8 +5,9 @@ import sys
 import tkinter
 from tkinter import ttk
 
+
 def _parse_time(input_string):
-    pat =  r'(?:(?:(\d{1,2}):)?(\d{1,2}):)?(\d{1,2})'
+    pat = r'(?:(?:(\d{1,2}):)?(\d{1,2}):)?(\d{1,2})'
     match = re.match(pat, input_string)
     if match is None:
         return 0
@@ -18,10 +19,12 @@ def _parse_time(input_string):
         total += int(hours) * 3600
     return total
 
+
 def _format_time(total_seconds):
     hours, minute_second = divmod(total_seconds, 3600)
     minutes, seconds = divmod(minute_second, 60)
     return "{}:{:0>2}:{:0>2}".format(hours, minutes, seconds)
+
 
 class App:
     def __init__(self, root=None):
@@ -64,9 +67,13 @@ class App:
         self.mainframe.columnconfigure(1, weight=0)
         self.input = ttk.Entry(self.mainframe, textvariable=self.input_var)
         self.input.grid(column=0, row=0, sticky="EW", columnspan=2)
-        self.stretch = ttk.Scale(self.mainframe, from_=0.1, to=3.0, variable=self.stretch_var)
+        self.stretch = ttk.Scale(
+            self.mainframe, from_=0.1, to=2.5, variable=self.stretch_var,
+        )
         self.stretch.grid(column=0, row=1, sticky="EW")
-        self.stretch_label = ttk.Label(self.mainframe, textvariable=self.stretch_label_var)
+        self.stretch_label = ttk.Label(
+            self.mainframe, textvariable=self.stretch_label_var,
+        )
         self.stretch_label.grid(column=1, row=1, sticky="EW")
         self.output = ttk.Label(self.mainframe, textvariable=self.output_var)
         self.output.grid(column=0, row=2, sticky="EW", columnspan=2)
