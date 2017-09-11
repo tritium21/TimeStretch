@@ -157,6 +157,9 @@ class App:
         self.root.resizable(0, 0)
         self.root.minsize(width=300, height=0)
         self.root.title("Time Stretch Calculator")
+        self.init_icon()
+
+    def init_icon(self):
         if getattr(sys, 'frozen', False):
             icon = path.join(sys._MEIPASS, 'clock.ico')
         else:
@@ -166,10 +169,8 @@ class App:
     def init_ui(self):
         self.notebook = ttk.Notebook(self.root)
         self.notebook.grid(column=0, row=0, sticky="NEWS")
-        self.stretchframe = Stretch(self.root)
-        self.percentframe = Percent(self.root)
-        self.notebook.add(self.stretchframe, text="Stretch")
-        self.notebook.add(self.percentframe, text="Completion")
+        self.notebook.add(Stretch(self.root), text="Stretch")
+        self.notebook.add(Percent(self.root), text="Completion")
 
     def mainloop(self):
         self.root.mainloop()
