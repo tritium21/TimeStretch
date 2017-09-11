@@ -55,10 +55,10 @@ class Percent(ttk.Frame):
         ttk.Label(self, text="Completed:").grid(column=0, row=2, sticky="EW")
 
         # Column 1
-        self.elapsed = ttk.Entry(self, textvariable=self.elapsed_var)
-        self.elapsed.grid(column=1, row=0, sticky="EW")
-        self.remaining = ttk.Entry(self, textvariable=self.remaining_var)
-        self.remaining.grid(column=1, row=1, sticky="EW")
+        self.elapsed_input = ttk.Entry(self, textvariable=self.elapsed_var)
+        self.elapsed_input.grid(column=1, row=0, sticky="EW")
+        self.remaining_input = ttk.Entry(self, textvariable=self.remaining_var)
+        self.remaining_input.grid(column=1, row=1, sticky="EW")
         self.percent = ttk.Label(self, textvariable=self.percent_var)
         self.percent.grid(column=1, row=2, sticky="EW")
 
