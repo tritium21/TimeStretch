@@ -113,7 +113,7 @@ class Stretch(ttk.Frame):
         # Column 1
         self.input = ttk.Entry(self, textvariable=self.input_var)
         self.input.grid(column=1, row=0, sticky="EW", columnspan=2)
-        self.stretch = ttk.Scale(self, from_=0.1, to=2.5, variable=self.stretch_var)
+        self.stretch = ttk.Scale(self, from_=0.1, to=3.0, variable=self.stretch_var)
         self.stretch.grid(column=1, row=1, sticky="EW")
         self.output = ttk.Label(self, textvariable=self.output_var)
         self.output.grid(column=1, row=2, sticky="EW", columnspan=2)
